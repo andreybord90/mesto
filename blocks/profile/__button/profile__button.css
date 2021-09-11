@@ -1,3 +1,7 @@
 .profile__button {
-    
+  cursor: pointer;
+}
+
+.profile__button:hover {
+  opacity: 60%;
 }

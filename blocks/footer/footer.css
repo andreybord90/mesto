@@ -4,8 +4,15 @@
 
   color: #545454;
 
-  font-family: Inter;
-  font-style: Regular;
+  font-style: normal;
+  font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+}
+
+@media (max-width: 800px) {
+  .footer {
+    padding: 48px 19px 36px;
+    margin: 0 auto;
+  }
 }

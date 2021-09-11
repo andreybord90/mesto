@@ -1,4 +1,10 @@
 .header__line {
     width: 100%;
-    padding-top: 41px;
+    padding-top: 32px;
 }
+
+@media (max-width: 800px) {
+    .header__line {
+      padding-top: 28px;
+    }
+  }
