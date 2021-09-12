@@ -1,7 +1,7 @@
 .element {
     background-color: #FFF;
     width: 282px;
-    height: 361px;
+    /* height: 361px; */
     border-radius: 10px;
     z-index: 1;
 }

@@ -1,5 +1,6 @@
 .wrapper {
-  width: 880px;
+  max-width: 880px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 }
@@ -9,3 +10,4 @@
     width: 320px;
   }
 }
+

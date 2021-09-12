@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,17 +11,14 @@
     <div class="page">
       <div class="wrapper">
         <header class="header">
-          <!-- <div class="logo"></div> -->
-
           <img class="header__logo" src="./image/__logo.svg" alt="Лого" />
           <img class="header__line" src="./image/Line.svg" alt="" />
         </header>
-
         <section class="profile">
           <img class="profile__avatar" src="./image/Avatar.png" alt="Лого" />
           <div class="profile__info">
-            <div class="profile__name">
-              Жак-Ив Кусто
+            <div class="profile__wrapper">
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
               <img
                 class="profile__button"
                 src="./image/EditButton.svg"
@@ -39,52 +36,52 @@
               src="./image/image_karachaevsk.png"
               alt="Карачаевск"
             />
-            <div class="element__info line">
-              <p class="element__name line">Карачаево-Черкессияяяяя</p>
+            <div class="element__info">
+              <p class="element__name">Карачаево-Черкессияяяяя</p>
               <div class="element__like"></div>
             </div>
           </div>
           <div class="element">
             <img
-              class="element__image line"
+              class="element__image"
               src="./image/image_elbrus.png"
               alt="Гора Эльбрус"
             />
-            <div class="element__info line">
-              <p class="element__name line">Гора Эльбрус</p>
+            <div class="element__info">
+              <p class="element__name">Гора Эльбрус</p>
               <div class="element__like"></div>
             </div>
           </div>
-          <div class="element line">
+          <div class="element">
             <img
-              class="element__image line"
+              class="element__image"
               src="./image/image_dombai.png"
               alt="Домбай"
             />
-            <div class="element__info line">
-              <p class="element__name line">Домбай</p>
+            <div class="element__info">
+              <p class="element__name">Домбай</p>
               <div class="element__like"></div>
             </div>
           </div>
-          <div class="element line">
+          <div class="element">
             <img
-              class="element__image line"
+              class="element__image"
               src="./image/image_gelengyk.jpg"
               alt="Геленжик"
             />
-            <div class="element__info line">
-              <p class="element__name line">Геленжик</p>
+            <div class="element__info">
+              <p class="element__name">Геленжик</p>
               <div class="element__like"></div>
             </div>
           </div>
-          <div class="element line">
+          <div class="element">
             <img
-              class="element__image line"
+              class="element__image"
               src="./image/image_ruza.jpg"
               alt="Руза"
             />
-            <div class="element__info line">
-              <p class="element__name line">Руза</p>
+            <div class="element__info">
+              <p class="element__name">Руза</p>
               <div class="element__like"></div>
             </div>
           </div>
@@ -102,53 +99,49 @@
           <div class="element">
             <img
               class="element__image"
-              src="./image/image_sudak.jpg"
-              alt="Судак"
+              src="./image/image-nykola.jpg"
+              alt="Никола-Ленивец"
             />
             <div class="element__info">
-              <p class="element__name">Судак</p>
+              <p class="element__name">Никола-Ленивец</p>
               <div class="element__like"></div>
             </div>
           </div>
           <div class="element">
             <img
               class="element__image"
-              src="./image/image_sudak.jpg"
-              alt="Судак"
+              src="./image/image-bashkiriya.jpg"
+              alt="Башкортостан"
             />
             <div class="element__info">
-              <p class="element__name">Судак</p>
+              <p class="element__name">Башкортостан</p>
               <div class="element__like"></div>
             </div>
           </div>
           <div class="element">
             <img
               class="element__image"
-              src="./image/image_sudak.jpg"
-              alt="Судак"
+              src="./image/image-krasnoyarsk.jpg"
+              alt="Красноярск"
             />
             <div class="element__info">
-              <p class="element__name">Судак</p>
+              <p class="element__name">Красноярск</p>
               <div class="element__like"></div>
             </div>
           </div>
         </section>
-        <footer class="footer line">2021 Mesto Russia</footer>
+        <footer class="footer">2021 Mesto Russia</footer>
       </div>
     </div>
     <section class="popup">
       <img class="popup__exit" src="./image/__сlose.svg" alt="Закрыть" />
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" placeholder="Жак-Ив Кусто" class="popup__name" />
-        <input
-          type="text"
-          placeholder="Исследователь океана"
-          class="popup__job"
-        />
+        <input type="text" class="popup__name" />
+        <input type="text" class="popup__job" />
         <button class="popup__button">Сохранить</button>
       </div>
     </section>
-    <script src="/script.js"></script>
+    <script src="/scripts/index.js"></script>
   </body>
 </html>

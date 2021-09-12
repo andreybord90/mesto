@@ -11,6 +11,11 @@
   .elements {
     column-gap: 0;
     padding-top: 36px;
-
   }
 }
+
+/* @media (max-width: 680px) {
+  .elements {
+    max-width: 580px;
+  }
+} */

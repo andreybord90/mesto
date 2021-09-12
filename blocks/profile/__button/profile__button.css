@@ -1,7 +1,14 @@
 .profile__button {
   cursor: pointer;
+  padding-left: 25px;
 }
 
 .profile__button:hover {
   opacity: 60%;
+}
+
+@media (max-width: 800px) {
+  .profile__button {
+    padding-left: 10px;
+  }
 }
