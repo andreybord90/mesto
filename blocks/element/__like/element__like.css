@@ -2,7 +2,7 @@
   width: 22px;
   padding-top: 3px;
   cursor: pointer;
-  background-image: url(/image/like.svg);
+  background-image: url(./image/like.svg);
   color: black;
   background-repeat: no-repeat;
   background-size: contain;
@@ -14,10 +14,10 @@
 }
 
 .element__like:active {
-  background-image: url(/image/like-active.svg);
+  background-image: url(./image/like-active.svg);
 }
 
 .element__like:active:hover {
-  background-image: url(/image/like-active.svg);
+  background-image: url(./image/like-active.svg);
   opacity: 100%;
 }
