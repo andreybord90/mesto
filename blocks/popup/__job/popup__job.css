@@ -1,0 +1,19 @@
+.popup__job {
+  padding: 0;
+  margin: 30px 36px 0;
+  border: none;
+
+  border-bottom: 1px solid #000000;
+  box-sizing: border-box;
+
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@media (max-width: 800px) {
+  .popup__job {
+    margin: 30px 22px 0;
+  }
+}
