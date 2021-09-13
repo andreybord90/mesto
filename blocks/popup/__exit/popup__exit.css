@@ -1,19 +1,24 @@
 .popup__exit {
   color: white;
+  background-color: transparent;
   width: 100%;
   max-width: 32px;
   /* padding-top: 0px; */
   max-height: 32px;
   height: 100%;
 
+  background-image: url(../../../image/__close.svg);
+
   cursor: pointer;
   position: relative;
   bottom: 8px;
   left: 240px;
+  border: none;
+  text-decoration: none;
 }
 
 .popup__exit:hover {
-    opacity: 60%;
+  opacity: 60%;
 }
 
 @media (max-width: 800px) {

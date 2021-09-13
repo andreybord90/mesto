@@ -13,45 +13,55 @@ const saveBnt = popup.querySelector(".popup__button"); //кнопка "Сохр�
 nameFromInput.placeholder = nameToProfile.textContent;
 jobFromInput.placeholder = jobToProfile.textContent;
 
-let memoryName = nameToProfile.textContent;
-let memoryjob = jobToProfile.textContent;
+// let memoryName = nameToProfile.textContent;
+// let memoryjob = jobToProfile.textContent;
 
-function SendinfoFromInput() {
-  popup.classList.remove("popup__opened");
-  nameFromInput.placeholder = nameToProfile.textContent;
-  jobFromInput.placeholder = jobToProfile.textContent;
-  nameFromInput.value = "";
-  jobFromInput.value = "";
-  memoryName = nameToProfile.textContent;
-  memoryjob = jobToProfile.textContent;
-}
+// function SendinfoFromInput() {
+//   popup.classList.remove("popup__opened");
+//   nameFromInput.placeholder = nameToProfile.textContent;
+//   jobFromInput.placeholder = jobToProfile.textContent;
+//   nameFromInput.value = "";
+//   jobFromInput.value = "";
+//   memoryName = nameToProfile.textContent;
+//   memoryjob = jobToProfile.textContent;
+
+// }
 
 function popupOpen() {
   popup.classList.add("popup__opened");
 }
 
 function popupExit() {
-  nameFromInput.placeholder = nameToProfile.textContent = memoryName;
-  jobFromInput.placeholder = jobToProfile.textContent = memoryjob;
-
-  nameFromInput.value = "";
-  jobFromInput.value = "";
-
   popup.classList.remove("popup__opened");
 }
 
-function updateValueName(e) {
-  nameToProfile.textContent = e.target.value;
-}
+function SendinfoFromInput() {
+  if (nameFromInput.value && jobFromInput.value) {
+    nameToProfile.textContent = nameFromInput.value;
+    nameFromInput.value = "";
+    nameFromInput.placeholder = nameToProfile.textContent;
+    jobToProfile.textContent = jobFromInput.value;
+    jobFromInput.value = "";
+    jobFromInput.placeholder = jobToProfile.textContent;
 
-function updateValueJob(e) {
-  jobToProfile.textContent = e.target.value;
+    popup.classList.remove("popup__opened");
+  } else if (nameFromInput.value) {
+    nameToProfile.textContent = nameFromInput.value;
+    nameFromInput.value = "";
+    nameFromInput.placeholder = nameToProfile.textContent;
+
+    popup.classList.remove("popup__opened");
+  } else if (jobFromInput.value) {
+    jobToProfile.textContent = jobFromInput.value;
+    jobFromInput.value = "";
+    jobFromInput.placeholder = jobToProfile.textContent;
+
+    popup.classList.remove("popup__opened");
+  } else popup.classList.remove("popup__opened");
+  
 }
 
 popupOpenBtn.addEventListener("click", popupOpen);
 popupCloseBtn.addEventListener("click", popupExit);
-
-nameFromInput.addEventListener("change", updateValueName);
-jobFromInput.addEventListener("change", updateValueJob);
 
 saveBnt.addEventListener("click", SendinfoFromInput);

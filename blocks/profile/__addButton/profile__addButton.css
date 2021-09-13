@@ -4,10 +4,11 @@
   cursor: pointer;
 
   background-image: url(../../../image/addButton.svg);
-  color: white;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  background-color: black;
+  border: none;
 }
 
 .profile__addButton:hover {
