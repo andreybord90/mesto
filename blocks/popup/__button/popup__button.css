@@ -1,16 +1,14 @@
 .popup__button {
   background-color: black;
   color: white;
-  max-width: 358px;
-  width: 100%;
-  padding: 14px 125px 18px;
-  margin: 48px 36px 37px;
-
+  padding: 12px 132px 16px;
+  margin-top: 12px;
   font-size: 18px;
   line-height: 22px;
   font-style: normal;
   font-weight: 400;
   cursor: pointer;
+  border: none;
 }
 
 .popup__button:hover {
@@ -19,10 +17,8 @@
 
 @media (max-width: 800px) {
   .popup__button {
-    max-width: 238px;
     padding: 14px 82px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px 22px 25px;
   }
 }

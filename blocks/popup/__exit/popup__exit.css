@@ -3,18 +3,18 @@
   background-color: transparent;
   width: 100%;
   max-width: 32px;
-  /* padding-top: 0px; */
   max-height: 32px;
   height: 100%;
-
   background-image: url(../../../image/__close.svg);
-
   cursor: pointer;
   position: relative;
-  bottom: 8px;
-  left: 240px;
+  left: 438px;
+  bottom:8px;
   border: none;
   text-decoration: none;
+  background-size: contain;
+  height: 32px;
+  width: 32px;
 }
 
 .popup__exit:hover {
@@ -23,6 +23,9 @@
 
 @media (max-width: 800px) {
   .popup__exit {
-    left: 160px;
+    left: 262px;
+    bottom:16px;
+    max-width: 20px;
+    max-height: 20px;
   }
 }

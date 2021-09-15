@@ -5,27 +5,10 @@ const popupCloseBtn = popup.querySelector(".popup__exit");
 const nameToProfile = document.querySelector(".profile__name"); //Имя на странице
 const jobToProfile = document.querySelector(".profile__job");
 
-const nameFromInput = popup.querySelector(".popup__name"); //Имя в попап
-const jobFromInput = popup.querySelector(".popup__job");
+const nameFromInput = popup.querySelector(".popup__text_name"); //Имя в попап
+const jobFromInput = popup.querySelector(".popup__text_job");
 
-const saveBnt = popup.querySelector(".popup__button"); //кнопка "Сохранить"
-
-nameFromInput.placeholder = nameToProfile.textContent;
-jobFromInput.placeholder = jobToProfile.textContent;
-
-// let memoryName = nameToProfile.textContent;
-// let memoryjob = jobToProfile.textContent;
-
-// function SendinfoFromInput() {
-//   popup.classList.remove("popup__opened");
-//   nameFromInput.placeholder = nameToProfile.textContent;
-//   jobFromInput.placeholder = jobToProfile.textContent;
-//   nameFromInput.value = "";
-//   jobFromInput.value = "";
-//   memoryName = nameToProfile.textContent;
-//   memoryjob = jobToProfile.textContent;
-
-// }
+const form = document.querySelector(".popup__form");
 
 function popupOpen() {
   popup.classList.add("popup__opened");
@@ -35,33 +18,16 @@ function popupExit() {
   popup.classList.remove("popup__opened");
 }
 
-function SendinfoFromInput() {
-  if (nameFromInput.value && jobFromInput.value) {
-    nameToProfile.textContent = nameFromInput.value;
-    nameFromInput.value = "";
-    nameFromInput.placeholder = nameToProfile.textContent;
-    jobToProfile.textContent = jobFromInput.value;
-    jobFromInput.value = "";
-    jobFromInput.placeholder = jobToProfile.textContent;
+function formSubmit(evt) {
+  evt.preventDefault();
 
-    popup.classList.remove("popup__opened");
-  } else if (nameFromInput.value) {
-    nameToProfile.textContent = nameFromInput.value;
-    nameFromInput.value = "";
-    nameFromInput.placeholder = nameToProfile.textContent;
+  nameToProfile.textContent = nameFromInput.value;
+  jobToProfile.textContent = jobFromInput.value;
 
-    popup.classList.remove("popup__opened");
-  } else if (jobFromInput.value) {
-    jobToProfile.textContent = jobFromInput.value;
-    jobFromInput.value = "";
-    jobFromInput.placeholder = jobToProfile.textContent;
-
-    popup.classList.remove("popup__opened");
-  } else popup.classList.remove("popup__opened");
-  
+  popupExit();  
 }
 
 popupOpenBtn.addEventListener("click", popupOpen);
 popupCloseBtn.addEventListener("click", popupExit);
 
-saveBnt.addEventListener("click", SendinfoFromInput);
+form.addEventListener("submit", formSubmit);
