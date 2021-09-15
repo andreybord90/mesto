@@ -1,12 +1,10 @@
 .profile__button {
-  background-color: black;
+  background-color: transparent;
   border: none;
-
   background-image: url(../../../image/EditButton.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-
   cursor: pointer;
   margin-left: 25px;
   width: 24px;
@@ -19,5 +17,6 @@
 @media (max-width: 800px) {
   .profile__button {
     margin-left: 10px;
+    width: 18px;
   }
 }

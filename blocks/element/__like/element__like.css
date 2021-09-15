@@ -8,6 +8,7 @@
   background-size: contain;
   background-position: center;
   border: none;
+  background-color:transparent;
 }
 
 .element__like:hover {

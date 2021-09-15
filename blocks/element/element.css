@@ -1,13 +1,12 @@
 .element {
-    background-color: #FFF;
-    width: 282px;
-    /* height: 361px; */
-    border-radius: 10px;
-    z-index: 1;
+  background-color: #fff;
+  width: 282px;
+  border-radius: 10px;
+  z-index: 1;
 }
 
 @media (max-width: 800px) {
-    .element {
-      margin: 0 auto;
-  
-    }}
+  .element {
+    margin: 0 auto;
+  }
+}

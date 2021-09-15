@@ -6,25 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
   </head>
-  <body>
-    <div class="page">
-      <div class="wrapper">
-        <header class="header">
-          <img class="header__logo" src="./image/__logo.svg" alt="Лого" />
-          <img class="header__line" src="./image/Line.svg" alt="" />
-        </header>
+  <body class="page">
+    <div class="wrapper">
+      <header class="header">
+        <img class="header__logo" src="./image/__logo.svg" alt="Лого" />
+      </header>
+      <main>
         <section class="profile">
           <img class="profile__avatar" src="./image/Avatar.png" alt="Лого" />
           <div class="profile__info">
             <div class="profile__wrapper">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button class="profile__button" type="button"></button>
+              <button class="profile__button" type="button" arial-label="кнопка редактировать профиль"></button>
             </div>
             <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__addButton" type="button"></button>
+          <button class="profile__add-button" type="button" arial-label="кнопка добавить контент"></button>
         </section>
         <section class="elements">
           <div class="element">
@@ -34,7 +33,7 @@
               alt="Карачаевск"
             />
             <div class="element__info">
-              <p class="element__name">Карачаево-Черкессияяяяя</p>
+              <h2 class="element__name">Карачаево-Черкессияяяяя</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
@@ -45,7 +44,7 @@
               alt="Гора Эльбрус"
             />
             <div class="element__info">
-              <p class="element__name">Гора Эльбрус</p>
+              <h2 class="element__name">Гора Эльбрус</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
@@ -56,7 +55,7 @@
               alt="Домбай"
             />
             <div class="element__info">
-              <p class="element__name">Домбай</p>
+              <h2 class="element__name">Домбай</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
@@ -67,7 +66,7 @@
               alt="Геленжик"
             />
             <div class="element__info">
-              <p class="element__name">Геленжик</p>
+              <h2 class="element__name">Геленжик</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
@@ -78,7 +77,7 @@
               alt="Руза"
             />
             <div class="element__info">
-              <p class="element__name">Руза</p>
+              <h2 class="element__name">Руза</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
@@ -89,23 +88,39 @@
               alt="Судак"
             />
             <div class="element__info">
-              <p class="element__name">Судак</p>
+              <h2 class="element__name">Судак</h2>
               <button class="element__like" type="button"></button>
             </div>
           </div>
         </section>
-        <footer class="footer">2021 Mesto Russia</footer>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">2021 Mesto Russia</p>
+      </footer>
+    </div>
+    <div class="popup">
+      <div class="popup__container">
+        <button class="popup__exit" type="button" arial-label="кнопка закрыть"></button>
+        <form class="popup__form" name="popup__form">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            class="popup__text popup__text_name"
+            name="popup__name"
+            placeholder="Жак-Ив Кусто"
+            required
+          />
+          <input
+            type="text"
+            class="popup__text popup__text_job"
+            name="popup__job"
+            placeholder="Исследователь океана"
+            required
+          />
+          <button class="popup__button" type="submit" arial-label="кнопка сохранить">Сохранить</button>
+        </form>
       </div>
     </div>
-    <section class="popup">
-      <button class="popup__exit" type="button"></button> />
-      <form class="popup__container" name="popup__container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" class="popup__name" name="popup__name" />
-        <input type="text" class="popup__job" name="popup__job" />
-        <button class="popup__button" type="button">Сохранить</button>
-      </form>
-    </section>
     <script src="./scripts/index.js"></script>
   </body>
 </html>

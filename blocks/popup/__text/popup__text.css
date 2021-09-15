@@ -1,17 +1,20 @@
-.popup__job {
-  padding: 0;
-  margin: 30px 36px 0;
+.popup__text {
+  margin: 0;
+  margin-bottom: 30px;
   border: none;
+  padding: 0;
   border-bottom: 1px solid rgb(0, 0, 0, 0.2);
   box-sizing: border-box;
   font-size: 14px;
   line-height: 17px;
   font-weight: 400;
   font-style: normal;
+  max-width: 358px;
+  min-height: 27px;
 }
 
 @media (max-width: 800px) {
-  .popup__job {
-    margin: 30px 22px 0;
+  .popup__text {
+    /* margin: 75px 22px 0; */
   }
 }
