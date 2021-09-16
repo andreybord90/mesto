@@ -12,9 +12,3 @@
   max-width: 358px;
   min-height: 27px;
 }
-
-@media (max-width: 800px) {
-  .popup__text {
-    /* margin: 75px 22px 0; */
-  }
-}
