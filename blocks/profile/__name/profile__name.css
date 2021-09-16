@@ -7,10 +7,9 @@
   margin: 0;
   max-width: 500px;
   text-overflow: ellipsis;
-  white-space:normal;
+  white-space: nowrap;
   overflow: hidden;
 }
-
 
 @media (max-width: 800px) {
   .profile__name {
