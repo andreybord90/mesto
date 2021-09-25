@@ -3,6 +3,7 @@
   width: 282px;
   border-radius: 10px;
   z-index: 1;
+  position: relative;
 }
 
 @media (max-width: 800px) {

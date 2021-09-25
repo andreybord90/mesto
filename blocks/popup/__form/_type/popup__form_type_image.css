@@ -1,0 +1,6 @@
+.popup__form_type_image {
+  color: black;
+  background-color: white;
+  display: flex;
+  padding: 0;
+}
