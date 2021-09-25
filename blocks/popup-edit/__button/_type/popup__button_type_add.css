@@ -1,0 +1,24 @@
+.popup__button_type_add {
+  background-color: black;
+  color: white;
+  padding: 12px 142px 16px;
+  margin-top: 12px;
+  font-size: 18px;
+  line-height: 22px;
+  font-style: normal;
+  font-weight: 400;
+  cursor: pointer;
+  border: none;
+}
+
+.popup__button_type_add:hover {
+  opacity: 80%;
+}
+
+@media (max-width: 800px) {
+  .popup__button_type_add {
+    padding: 14px 90px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
