@@ -1,0 +1,27 @@
+.popup__exit_type_image {
+  color: white;
+  background-color: transparent;
+  background-image: url(../../../../image/__close.svg);
+  cursor: pointer;
+  position: relative;
+  left: calc(100% + 8px);
+  bottom: 8px;
+  border: none;
+  text-decoration: none;
+  background-size: contain;
+  height: 32px;
+  width: 32px;
+}
+
+.popup__exit_type_image:hover {
+  opacity: 60%;
+}
+
+@media (max-width: 800px) {
+  .popup__exit_type_image {
+    left: calc(100% - 20px);
+    bottom: 16px;
+    width: 20px;
+    height: 20px;
+  }
+}
