@@ -1,0 +1,24 @@
+.popup__container_type_image {
+  display: flex;
+  flex-direction: column;
+  /* max-width: 100% ; */
+}
+
+@media (max-width: 800px) {
+  .popup__container_type_image {
+    max-width: 600px;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .popup__container_type_image {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 400px) {
+  .popup__container_type_image {
+    max-width: 282px;
+  }
+}

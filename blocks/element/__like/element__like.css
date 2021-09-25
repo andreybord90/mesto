@@ -8,18 +8,9 @@
   background-size: contain;
   background-position: center;
   border: none;
-  background-color:transparent;
+  background-color: transparent;
 }
 
 .element__like:hover {
   opacity: 50%;
-}
-
-.element__like:active {
-  background-image: url(../../../image/like-active.svg);
-}
-
-.element__like:active:hover {
-  background-image: url(../../../image/like-active.svg);
-  opacity: 100%;
 }
