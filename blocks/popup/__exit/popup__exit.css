@@ -4,7 +4,7 @@
   background-image: url(../../../image/__close.svg);
   cursor: pointer;
   position: relative;
-  left: 438px;
+  /* left: 438px; */
   bottom:8px;
   border: none;
   text-decoration: none;
@@ -19,7 +19,7 @@
 
 @media (max-width: 800px) {
   .popup__exit {
-    left: 262px;
+    /* left: 262px; */
     bottom:16px;
     width: 20px;
     height: 20px;

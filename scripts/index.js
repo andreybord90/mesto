@@ -1,7 +1,7 @@
 //попап редактирования профиля
 const popup = document.querySelector(".popup-type-edit");
 const popupOpenBtn = document.querySelector(".profile__button");
-const popupCloseBtn = popup.querySelector(".popup__exit");
+const popupCloseBtn = popup.querySelector(".popup__exit_type_edit");
 const formEdit = document.querySelector(".popup__form");
 
 const nameFromInput = popup.querySelector(".popup__text_type_name"); //Имя в попап
