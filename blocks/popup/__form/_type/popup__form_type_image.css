@@ -3,4 +3,11 @@
   background-color: white;
   display: flex;
   padding: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 800px) {
+  .popup__form_type_image {
+    padding: 0;
+  }
 }
