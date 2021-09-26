@@ -1,5 +1,5 @@
 //попап редактирования профиля
-const popup = document.querySelector(".popup-edit");
+const popup = document.querySelector(".popup-type-edit");
 const popupOpenBtn = document.querySelector(".profile__button");
 const popupCloseBtn = popup.querySelector(".popup__exit");
 const formEdit = document.querySelector(".popup__form");
