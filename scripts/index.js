@@ -67,7 +67,7 @@ function AddContent(event) {
 
   let newPlaceName = {};
   newPlaceName.name = event.currentTarget.querySelector(
-    ".popup-add__text_type_sign"
+    ".popup__text_type_sign"
   ).value;
   newPlaceName.link = event.currentTarget.querySelector(
     ".popup__text_type_url"
@@ -81,7 +81,6 @@ function AddContent(event) {
 
 function popupOpenAdd() {
   popupAdd.classList.add("popup_opened");
-  console.log(popupAdd.classList);
 }
 
 function popupExitAdd() {
