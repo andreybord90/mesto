@@ -55,7 +55,7 @@ function addContent(event) {
   renderContent(newPlaceName);
 
   event.currentTarget.reset();
-  popupExitAdd();
+  popupExit(popupAdd);
 }
 
 function popupOpen(props) {
@@ -90,7 +90,7 @@ function formSubmit(event) {
   nameToProfile.textContent = nameFromInput.value;
   jobToProfile.textContent = jobFromInput.value;
 
-  popupExit();
+  popupExit(popup);
 }
 
 function deleteElement(event) {
