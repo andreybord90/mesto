@@ -32,6 +32,9 @@ function createCard(el) {
   const newContent = contentTamplateElement.cloneNode(true);
   newContent.querySelector(".element__name").textContent = el.name;
   newContent.querySelector(".element__image").src = el.link;
+  newContent.querySelector(
+    ".element__image"
+  ).alt = `Фотография места. ${el.name}`;
   setElementListener(newContent);
   return newContent;
 }
@@ -59,29 +62,24 @@ function addContent(event) {
 }
 
 function popupOpen(props) {
-  if (props === "edit") {
-    popup.classList.add("popup_opened");
-    nameFromInput.value = nameToProfile.textContent;
-    jobFromInput.value = jobToProfile.textContent;
-  }
-  if (props === "add") {
-    popupAdd.classList.add("popup_opened");
-  }
+  props.classList.add("popup_opened");
+}
+
+function editOpen() {
+  nameFromInput.value = nameToProfile.textContent;
+  jobFromInput.value = jobToProfile.textContent;
+  popupOpen(popup);
 }
 
 function popupExit(props) {
   props.classList.remove("popup_opened");
 }
 
-
 function openImage(e) {
   popupImage.querySelector(".popup__image").src = e.currentTarget.src;
   popupImage.querySelector(".popup__title_type_image").textContent =
     e.currentTarget.parentElement.querySelector(".element__name").textContent;
-}
-
-function showImg(e) {
-  e.classList.add("popup_opened");
+  popupOpen(popupImage);
 }
 
 function formSubmit(event) {
@@ -104,22 +102,22 @@ function setElementListener(element) {
     .addEventListener("click", (e) => deleteElement(e));
   element
     .querySelector(".element__like")
-    .addEventListener("click", (e) => LikeAdd(e));
+    .addEventListener("click", (e) => likeAdd(e));
   element.querySelector(".element__image").addEventListener("click", (e) => {
     openImage(e);
-    showImg(popupImage);
+    popupOpen(popupImage);
   });
 }
 
-function LikeAdd(e) {
+function likeAdd(e) {
   e.target.classList.toggle("element__like_active");
 }
 
-popupOpenBtn.addEventListener("click", () => popupOpen("edit"));
+popupOpenBtn.addEventListener("click", editOpen);
 popupCloseBtn.addEventListener("click", () => popupExit(popup));
 formEdit.addEventListener("submit", formSubmit);
 
-popupOpenBtnAdd.addEventListener("click", () => popupOpen("add"));
+popupOpenBtnAdd.addEventListener("click", () => popupOpen(popupAdd));
 popupCloseBtnAdd.addEventListener("click", () => popupExit(popupAdd));
 formAdd.addEventListener("submit", addContent);
 
