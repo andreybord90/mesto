@@ -5,9 +5,11 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  align-self: center;
   cursor: pointer;
   margin-left: 25px;
   width: 24px;
+  height: 24px;
 }
 
 .profile__button:hover {
@@ -18,5 +20,6 @@
   .profile__button {
     margin-left: 10px;
     width: 18px;
+    height: 18px;
   }
 }

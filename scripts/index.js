@@ -63,6 +63,7 @@ function addContent(event) {
 
 function popupOpen(props) {
   props.classList.add("popup_opened");
+  document.addEventListener("keydown", closePopupEscape);
 }
 
 function editOpen() {
@@ -73,6 +74,8 @@ function editOpen() {
 
 function popupExit(props) {
   props.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupEscape);
+
 }
 
 function openImage(e) {
@@ -113,6 +116,19 @@ function likeAdd(e) {
   e.target.classList.toggle("element__like_active");
 }
 
+function closePopupOverlay(event) {
+  if (event.target === event.currentTarget) {
+    popupExit(event.target);
+  }
+}
+
+function closePopupEscape(evt) {
+  const popupVisible = document.querySelector(".popup_opened");
+  if (evt.key === 'Escape') {
+    popupExit(popupVisible);
+  }
+}
+
 popupOpenBtn.addEventListener("click", editOpen);
 popupCloseBtn.addEventListener("click", () => popupExit(popup));
 formEdit.addEventListener("submit", formSubmit);
@@ -122,6 +138,10 @@ popupCloseBtnAdd.addEventListener("click", () => popupExit(popupAdd));
 formAdd.addEventListener("submit", addContent);
 
 popupImageClose.addEventListener("click", () => popupExit(popupImage));
+
+popup.addEventListener("mousedown", closePopupOverlay);
+popupAdd.addEventListener("mousedown", closePopupOverlay);
+popupImage.addEventListener("mousedown", closePopupOverlay);
 
 const initialCards = [
   {
