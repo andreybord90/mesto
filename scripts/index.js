@@ -1,11 +1,11 @@
 //попап редактирования профиля
-const popup = document.querySelector(".popup-type-edit");
+const profilePopup = document.querySelector(".popup-type-edit");
 const popupOpenBtn = document.querySelector(".profile__button");
-const popupCloseBtn = popup.querySelector(".popup__exit_type_edit");
+const popupCloseBtn = profilePopup.querySelector(".popup__exit_type_edit");
 const formEdit = document.querySelector(".popup__form");
 
-const nameFromInput = popup.querySelector(".popup__text_type_name"); //Имя в попап
-const jobFromInput = popup.querySelector(".popup__text_type_job");
+const nameFromInput = profilePopup.querySelector(".popup__text_type_name"); //Имя в попап
+const jobFromInput = profilePopup.querySelector(".popup__text_type_job");
 
 //попап контент
 const popupAdd = document.querySelector(".popup_type_add");
@@ -32,9 +32,7 @@ function createCard(el) {
   const newContent = contentTamplateElement.cloneNode(true);
   newContent.querySelector(".element__name").textContent = el.name;
   newContent.querySelector(".element__image").src = el.link;
-  newContent.querySelector(
-    ".element__image"
-  ).alt = `Фотография места. ${el.name}`;
+  newContent.querySelector(".element__image").alt = el.name;
   setElementListener(newContent);
   return newContent;
 }
@@ -58,10 +56,10 @@ function addContent(event) {
   renderContent(newPlaceName);
 
   event.currentTarget.reset();
-  popupExit(popupAdd);
+  closePopup(popupAdd);
 }
 
-function popupOpen(props) {
+function openPopup(props) {
   props.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupEscape);
 }
@@ -69,20 +67,20 @@ function popupOpen(props) {
 function editOpen() {
   nameFromInput.value = nameToProfile.textContent;
   jobFromInput.value = jobToProfile.textContent;
-  popupOpen(popup);
+  openPopup(profilePopup);
 }
 
-function popupExit(props) {
+function closePopup(props) {
   props.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEscape);
-
 }
 
 function openImage(e) {
   popupImage.querySelector(".popup__image").src = e.currentTarget.src;
+  popupImage.querySelector(".popup__image").alt = e.currentTarget.alt;
   popupImage.querySelector(".popup__title_type_image").textContent =
     e.currentTarget.parentElement.querySelector(".element__name").textContent;
-  popupOpen(popupImage);
+  openPopup(popupImage);
 }
 
 function formSubmit(event) {
@@ -91,7 +89,7 @@ function formSubmit(event) {
   nameToProfile.textContent = nameFromInput.value;
   jobToProfile.textContent = jobFromInput.value;
 
-  popupExit(popup);
+  closePopup(profilePopup);
 }
 
 function deleteElement(event) {
@@ -108,7 +106,7 @@ function setElementListener(element) {
     .addEventListener("click", (e) => likeAdd(e));
   element.querySelector(".element__image").addEventListener("click", (e) => {
     openImage(e);
-    popupOpen(popupImage);
+    // openPopup(popupImage);
   });
 }
 
@@ -118,28 +116,28 @@ function likeAdd(e) {
 
 function closePopupOverlay(event) {
   if (event.target === event.currentTarget) {
-    popupExit(event.target);
+    closePopup(event.target);
   }
 }
 
 function closePopupEscape(evt) {
-  const popupVisible = document.querySelector(".popup_opened");
-  if (evt.key === 'Escape') {
-    popupExit(popupVisible);
+  if (evt.key === "Escape") {
+    const popupVisible = document.querySelector(".popup_opened");
+    closePopup(popupVisible);
   }
 }
 
 popupOpenBtn.addEventListener("click", editOpen);
-popupCloseBtn.addEventListener("click", () => popupExit(popup));
+popupCloseBtn.addEventListener("click", () => closePopup(profilePopup));
 formEdit.addEventListener("submit", formSubmit);
 
-popupOpenBtnAdd.addEventListener("click", () => popupOpen(popupAdd));
-popupCloseBtnAdd.addEventListener("click", () => popupExit(popupAdd));
+popupOpenBtnAdd.addEventListener("click", () => openPopup(popupAdd));
+popupCloseBtnAdd.addEventListener("click", () => closePopup(popupAdd));
 formAdd.addEventListener("submit", addContent);
 
-popupImageClose.addEventListener("click", () => popupExit(popupImage));
+popupImageClose.addEventListener("click", () => closePopup(popupImage));
 
-popup.addEventListener("mousedown", closePopupOverlay);
+profilePopup.addEventListener("mousedown", closePopupOverlay);
 popupAdd.addEventListener("mousedown", closePopupOverlay);
 popupImage.addEventListener("mousedown", closePopupOverlay);
 

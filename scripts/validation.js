@@ -32,10 +32,13 @@ const toggleButtonState = (button, isActive, config) => {
 const setEventListeners = (formElement, config) => {
   const inputList = formElement.querySelectorAll(config.inputSelector);
   const submitButton = formElement.querySelector(config.submitButtonSelector);
+  const isFormValid = formElement.checkValidity();
+  toggleButtonState(submitButton, isFormValid, config);
 
   Array.from(inputList).forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       const isFormValid = formElement.checkValidity();
+
       checkInputValidity(formElement, inputElement, config);
       toggleButtonState(submitButton, isFormValid, config);
     });
@@ -43,7 +46,7 @@ const setEventListeners = (formElement, config) => {
 
   formElement.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    // console.log("Отправка форм");
+    toggleButtonState(submitButton, false, config);
   });
 };
 
@@ -61,7 +64,7 @@ const validationConfig = {
   submitButtonSelector: ".popup__button",
   inactiveButtonClass: "popup__button_disabled",
   inputErrorClass: "popup__text_type_error",
-//   errorClass: "popup__text-error",
+  //   errorClass: "popup__text-error",
 };
 
 enableValidation(validationConfig);
