@@ -10,8 +10,9 @@ export default class FormValidator {
     errorElement.textContent = inputElement.validationMessage;
     inputElement.classList.add(this._config.inputErrorClass);
   }
+
   _hideError(errorElement, inputElement) {
-    errorElement.textContent = inputElement.validationMessage;
+    errorElement.textContent = "";
     inputElement.classList.remove(this._config.inputErrorClass);
   }
 
@@ -29,7 +30,6 @@ export default class FormValidator {
   }
   _toggleButtonState() {
     const isFormValid = this._formElement.checkValidity();
-
     if (isFormValid) {
       this._submitButton.classList.remove(this._config.inactiveButtonClass);
       this._submitButton.disabled = false;
