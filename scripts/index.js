@@ -1,32 +1,6 @@
 import FormValidator from "../scripts/FormValidator.js";
 import Card from "../scripts/Card.js";
-
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
+import { initialCards } from "../scripts/array.js";
 
 //попап редактирования профиля
 const profilePopup = document.querySelector(".popup-type-edit");
@@ -111,7 +85,7 @@ function closePopup(props) {
   document.removeEventListener("keydown", closePopupEscape);
 }
 
-function formSubmit(event) {
+function submitFormEdit(event) {
   event.preventDefault();
 
   nameToProfile.textContent = nameFromInput.value;
@@ -133,11 +107,16 @@ function closePopupEscape(evt) {
   }
 }
 
+function handleOpenAddPopup() {
+  cardFormValidation.resetValidation();
+  openPopup(popupAdd);
+}
+
 popupOpenBtn.addEventListener("click", editOpen);
 popupCloseBtn.addEventListener("click", () => closePopup(profilePopup));
-formEdit.addEventListener("submit", formSubmit);
+formEdit.addEventListener("submit", submitFormEdit);
 
-popupOpenBtnAdd.addEventListener("click", () => openPopup(popupAdd));
+popupOpenBtnAdd.addEventListener("click", handleOpenAddPopup);
 popupCloseBtnAdd.addEventListener("click", () => closePopup(popupAdd));
 formAdd.addEventListener("submit", addContent);
 
