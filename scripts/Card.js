@@ -1,4 +1,4 @@
-import { openPopup } from "../scripts/index.js";
+// import { openPopup } from "../scripts/index.js";
 
 const popup = document.querySelector(".popup_type_image");
 
@@ -56,7 +56,10 @@ export default class Card {
     popupImage.alt = this._name;
     popup.querySelector(".popup__title").textContent = this._name;
 
-    openPopup(popup);
+    // openPopup(popup);
+
+    popup.classList.add("popup_opened");
+    document.addEventListener("keydown", closePopupEscape);
   }
 }
 

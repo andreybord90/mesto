@@ -1,6 +1,8 @@
 import FormValidator from "../scripts/FormValidator.js";
 import Card from "../scripts/Card.js";
 import { initialCards } from "../scripts/array.js";
+import Section from "./components/Section.js";
+import PopupWithImage from "./components/PopupWithImage.js";
 
 //попап редактирования профиля
 const profilePopup = document.querySelector(".popup-type-edit");
@@ -25,6 +27,8 @@ const contentElements = document.querySelector(".elements");
 const nameToProfile = document.querySelector(".profile__name"); //Имя на странице
 const jobToProfile = document.querySelector(".profile__job");
 
+const cardListSelector = ".elements";
+
 const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__text",
@@ -42,15 +46,29 @@ function renderContent(el) {
   contentElements.prepend(newCard);
 }
 
-function createCard(data) {
-  const card = new Card(data, ".element__template").generateCard();
-  return card;
-}
+const defaultSection = new Section(
+  {
+    data: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, ".element__template");
+      const cardElement = card.generateCard();
+      defaultSection.addItem(cardElement);
+    },
+  },
+  cardListSelector
+);
 
-initialCards.forEach((item) => {
-  const defaultCards = createCard(item);
-  contentElements.append(defaultCards);
-});
+const newPopup = new PopupWithImage({ popupImage });
+
+// function createCard(data) {
+//   const card = new Card(data, ".element__template").generateCard();
+//   return card;
+// }
+
+// initialCards.forEach((item) => {
+//   const defaultCards = createCard(item);
+//   contentElements.append(defaultCards);
+// });
 
 function addContent(event) {
   event.preventDefault();
@@ -69,20 +87,30 @@ function addContent(event) {
   closePopup(popupAdd);
 }
 
-function openPopup(props) {
-  props.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupEscape);
-}
-
-function editOpen() {
-  nameFromInput.value = nameToProfile.textContent;
-  jobFromInput.value = jobToProfile.textContent;
-  openPopup(profilePopup);
-}
+// function editOpen() {
+//   nameFromInput.value = nameToProfile.textContent;
+//   jobFromInput.value = jobToProfile.textContent;
+//   openPopup(profilePopup);
+// }
+// function openPopup(props) {
+//   props.classList.add("popup_opened");
+//   document.addEventListener("keydown", closePopupEscape);
+// }
 
 function closePopup(props) {
   props.classList.remove("popup_opened");
   document.removeEventListener("keydown", closePopupEscape);
+}
+function closePopupEscape(evt) {
+  if (evt.key === "Escape") {
+    const popupVisible = document.querySelector(".popup_opened");
+    closePopup(popupVisible);
+  }
+}
+function closePopupOverlay(event) {
+  if (event.target === event.currentTarget) {
+    closePopup(event.target);
+  }
 }
 
 function submitFormEdit(event) {
@@ -94,25 +122,12 @@ function submitFormEdit(event) {
   closePopup(profilePopup);
 }
 
-function closePopupOverlay(event) {
-  if (event.target === event.currentTarget) {
-    closePopup(event.target);
-  }
-}
-
-function closePopupEscape(evt) {
-  if (evt.key === "Escape") {
-    const popupVisible = document.querySelector(".popup_opened");
-    closePopup(popupVisible);
-  }
-}
-
 function handleOpenAddPopup() {
   cardFormValidation.resetValidation();
-  openPopup(popupAdd);
+  this.Open(popupAdd);
 }
 
-popupOpenBtn.addEventListener("click", editOpen);
+// popupOpenBtn.addEventListener("click", this.Open);
 popupCloseBtn.addEventListener("click", () => closePopup(profilePopup));
 formEdit.addEventListener("submit", submitFormEdit);
 
@@ -133,4 +148,6 @@ const enableValidation = (config) => {
 
 enableValidation(config);
 
-export { openPopup };
+defaultSection.renderItems();
+
+// export { openPopup };
