@@ -6,7 +6,6 @@ export default class UserInfo {
     this._job = "";
   }
   updateUserInfo() {
-    console.log("name>>>>>", this._nameElem);
     this._nameElem.textContent = this._name;
     this._jobElem.textContent = this._job;
   }

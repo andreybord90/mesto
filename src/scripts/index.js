@@ -1,3 +1,4 @@
+import "./../pages/index.css";
 import FormValidator from "../scripts/FormValidator.js";
 import Card from "../scripts/Card.js";
 import { initialCards } from "../scripts/array.js";
@@ -113,6 +114,7 @@ function renderContent(el) {
 }
 
 function addContent(event) {
+  // console.log(event);
   event.preventDefault();
 
   const newPlaceName = {};
@@ -134,10 +136,11 @@ const openOnClickAdd = () => {
 };
 
 popupOpenBtnAdd.addEventListener("click", () => {
-  const getUserInfo = UserInfo.getUserInfo();
+  console.log("hello");
+  const getUserInfo = userInfo.getUserInfo();
   nameInput.value = getUserInfo.name;
   jobInput.value = getUserInfo.job;
-  openOnClickAdd;
+  openOnClickAdd();
 });
 popupOpenBtn.addEventListener("click", openOnClickEdit);
 
