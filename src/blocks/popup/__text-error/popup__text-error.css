@@ -5,5 +5,10 @@
   height: 25px;
   box-sizing: border-box;
   max-width: 358px;
+}
 
+@media (max-width: 400px) {
+  .popup__text-error {
+    max-width: 238px;
+  }
 }

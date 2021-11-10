@@ -1,11 +1,12 @@
-import { openPopup } from "../scripts/index.js";
+// import { openPopup } from "../scripts/index.js";
 
 const popup = document.querySelector(".popup_type_image");
 
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor({ data, handleCardClick }, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this.handleCardClick = handleCardClick;
     this._cardSelector = cardSelector;
   }
 
@@ -38,7 +39,7 @@ export default class Card {
       .addEventListener("click", () => this._deleteElement());
     this._likeButton.addEventListener("click", () => this._likeAdd());
     this._cardImage.addEventListener("click", () => {
-      this._openImage();
+      this.handleCardClick();
     });
   }
 
@@ -49,15 +50,18 @@ export default class Card {
   _likeAdd() {
     this._likeButton.classList.toggle("element__like_active");
   }
-  _openImage() {
-    const popupImage = popup.querySelector(".popup__image");
+  // _openImage() {
+  //   const popupImage = popup.querySelector(".popup__image");
 
-    popupImage.src = this._link;
-    popupImage.alt = this._name;
-    popup.querySelector(".popup__title").textContent = this._name;
+  //   popupImage.src = this._link;
+  //   popupImage.alt = this._name;
+  //   popup.querySelector(".popup__title").textContent = this._name;
 
-    openPopup(popup);
-  }
+  //   // openPopup(popup);
+
+  //   popup.classList.add("popup_opened");
+  //   // document.addEventListener("keydown", closePopupEscape);
+  // }
 }
 
 export { Card };
