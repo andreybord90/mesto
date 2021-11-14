@@ -1,3 +1,14 @@
+export const cardListSelector = ".elements";
+
+export const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__text",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__text_type_error",
+  errorClass: "error",
+};
+
 export const initialCards = [
   {
     name: "Архыз",
@@ -24,5 +35,3 @@ export const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-
-//  { initialCards };
