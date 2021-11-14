@@ -1,7 +1,3 @@
-// import { openPopup } from "../scripts/index.js";
-
-const popup = document.querySelector(".popup_type_image");
-
 export default class Card {
   constructor({ data, handleCardClick }, cardSelector) {
     this._name = data.name;
@@ -50,18 +46,6 @@ export default class Card {
   _likeAdd() {
     this._likeButton.classList.toggle("element__like_active");
   }
-  // _openImage() {
-  //   const popupImage = popup.querySelector(".popup__image");
-
-  //   popupImage.src = this._link;
-  //   popupImage.alt = this._name;
-  //   popup.querySelector(".popup__title").textContent = this._name;
-
-  //   // openPopup(popup);
-
-  //   popup.classList.add("popup_opened");
-  //   // document.addEventListener("keydown", closePopupEscape);
-  // }
 }
 
 export { Card };
