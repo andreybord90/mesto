@@ -1,19 +1,19 @@
 export default class UserInfo {
-  constructor() {
-    this._name = "";
-    this._job = "";
+  constructor(nameElem, jobElem) {
+    this._name = nameElem;
+    this._job = jobElem;
   }
 
   setUserInfo(data) {
-    this._name = data.popup__name;
-    this._job = data.popup__job;
+    this._name.textContent = data.name;
+    this._job.textContent = data.job;
   }
 
   getUserInfo() {
     return {
-      name: this._name,
+      name: this._name.textContent,
 
-      job: this._job,
+      job: this._job.textContent,
     };
   }
 }
