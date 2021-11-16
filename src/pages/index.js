@@ -12,9 +12,6 @@ const popupEdit = document.querySelector(".popup-type-edit");
 const popupOpenBtnEdit = document.querySelector(".profile__button");
 const formEdit = document.querySelector(".popup__form");
 
-// const nameFromInput = popupEdit.querySelector(".popup__text_type_name"); //Имя в попап
-// const jobFromInput = popupEdit.querySelector(".popup__text_type_job");
-
 //попап контент
 const popupAdd = document.querySelector(".popup_type_add");
 const popupOpenBtnAdd = document.querySelector(".profile__add-button");
@@ -27,8 +24,8 @@ const contentElements = document.querySelector(".elements");
 const nameEditProfile = document.querySelector(".profile__name");
 const jobEditProfile = document.querySelector(".profile__job");
 
-const nameInput = popupEdit.querySelector("[name=popup__name]");
-const jobInput = popupEdit.querySelector("[name=popup__job]");
+const nameInput = popupEdit.querySelector("[name=name]");
+const jobInput = popupEdit.querySelector("[name=job]");
 
 const cardName = document.querySelector(".popup__text_type_sign");
 const cardLink = document.querySelector(".popup__text_type_url");
@@ -44,15 +41,14 @@ const userInfo = new UserInfo(nameEditProfile, jobEditProfile);
 
 const openPopupEdit = new PopupWithForm({
   popup: popupEdit,
-  handleFormSubmit: (e) => {
-    handleFormSubmit(e);
+  handleFormSubmit: (data) => {
+    handleFormSubmit(data);
   },
 });
 openPopupEdit.setEventListeners();
 
 const handleFormSubmit = (data) => {
-  nameEditProfile.textContent = data.popup__name;
-  jobEditProfile.textContent = data.popup__job;
+  userInfo.setUserInfo(data);
 
   openPopupEdit.close();
 };
@@ -68,7 +64,6 @@ popupOpenBtnEdit.addEventListener("click", (e) => {
   const getUserInfo = userInfo.getUserInfo();
   nameInput.value = getUserInfo.name;
   jobInput.value = getUserInfo.job;
-  cardFormValidation.resetValidation();
   openOnClickEdit(e);
 });
 
@@ -111,23 +106,9 @@ openPopupAdd.setEventListeners();
 
 const addContent = (data) => {
   const newCard = createCard(data);
-  newSection.prependItem(newCard);
+  defaultSection.prependItem(newCard);
   openPopupAdd.close();
   // event.currentTarget.reset();
-};
-const newSection = new Section(
-  {
-    data: userInfo.getUserInfo(),
-    renderer: (item) => {
-      const card = createCard(item);
-      newSection.prependItem(card);
-    },
-  },
-  cardListSelector
-);
-const renderContent = (newPlaceName) => {
-  const newCard = createCard(newPlaceName);
-  newSection.prependItem(newCard);
 };
 
 const openOnClickAdd = () => {
