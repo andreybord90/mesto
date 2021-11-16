@@ -24,19 +24,53 @@ const popupImage = document.querySelector(".popup_type_image");
 
 const contentElements = document.querySelector(".elements");
 
-// const nameToProfile = document.querySelector(".profile__name"); //Имя на странице
-// const jobToProfile = document.querySelector(".profile__job");
-
 const nameEditProfile = document.querySelector(".profile__name");
 const jobEditProfile = document.querySelector(".profile__job");
 
 const nameInput = popupEdit.querySelector("[name=popup__name]");
 const jobInput = popupEdit.querySelector("[name=popup__job]");
 
+const cardName = document.querySelector(".popup__text_type_sign");
+const cardLink = document.querySelector(".popup__text_type_url");
+const newPlaceName = {
+  name: cardName.value,
+  link: cardLink.value,
+};
+
 const cardFormValidation = new FormValidator(config, formAdd);
 const editFormValidation = new FormValidator(config, formEdit);
 
 const userInfo = new UserInfo(nameEditProfile, jobEditProfile);
+
+const openPopupEdit = new PopupWithForm({
+  popup: popupEdit,
+  handleFormSubmit: (e) => {
+    handleFormSubmit(e);
+  },
+});
+openPopupEdit.setEventListeners();
+
+const handleFormSubmit = (data) => {
+  nameEditProfile.textContent = data.popup__name;
+  jobEditProfile.textContent = data.popup__job;
+
+  openPopupEdit.close();
+};
+
+const openOnClickEdit = (event) => {
+  event.preventDefault();
+  editFormValidation.resetValidation();
+  openPopupEdit.open();
+};
+
+//открытие попапа
+popupOpenBtnEdit.addEventListener("click", (e) => {
+  const getUserInfo = userInfo.getUserInfo();
+  nameInput.value = getUserInfo.name;
+  jobInput.value = getUserInfo.job;
+  cardFormValidation.resetValidation();
+  openOnClickEdit(e);
+});
 
 const createCard = (data) => {
   const card = new Card(
@@ -63,10 +97,11 @@ const defaultSection = new Section(
 );
 defaultSection.renderItems();
 
-const openPopup = new PopupWithImage(popupImage);
+const openPopup = new PopupWithImage(popupImage); //попап изображения
 openPopup.setEventListeners();
 
 const openPopupAdd = new PopupWithForm({
+  //попап добавления карточки
   popup: popupAdd,
   handleFormSubmit: (event) => {
     addContent(event);
@@ -74,41 +109,15 @@ const openPopupAdd = new PopupWithForm({
 });
 openPopupAdd.setEventListeners();
 
-const openPopupEdit = new PopupWithForm({
-  popup: popupEdit,
-  handleFormSubmit: (e) => {
-    handleFormSubmit(e);
-  },
-});
-openPopupEdit.setEventListeners();
-
-const handleFormSubmit = () => {
-  userInfo.setUserInfo(openPopupEdit._getInputValues);
-  openPopupEdit.close();
-};
-
-const openOnClickEdit = (event) => {
-  event.preventDefault();
-  editFormValidation.resetValidation();
-  openPopupEdit.open();
-};
-
-const cardName = document.querySelector(".popup__text_type_sign");
-const cardLink = document.querySelector(".popup__text_type_url");
-const newPlaceName = {
-  name: cardName.value,
-  link: cardLink.value,
-};
-const addContent = (event) => {
-  const newCard = createCard(newPlaceName);
-  renderContent(newCard);
-  // event.currentTarget.reset();
+const addContent = (data) => {
+  const newCard = createCard(data);
+  newSection.prependItem(newCard);
   openPopupAdd.close();
-  event.currentTarget.reset();
+  // event.currentTarget.reset();
 };
 const newSection = new Section(
   {
-    data: newPlaceName,
+    data: userInfo.getUserInfo(),
     renderer: (item) => {
       const card = createCard(item);
       newSection.prependItem(card);
@@ -118,8 +127,6 @@ const newSection = new Section(
 );
 const renderContent = (newPlaceName) => {
   const newCard = createCard(newPlaceName);
-  // newCard.addItem();
-  console.log("newPlaceName", newPlaceName);
   newSection.prependItem(newCard);
 };
 
@@ -130,13 +137,6 @@ const openOnClickAdd = () => {
 };
 
 popupOpenBtnAdd.addEventListener("click", openOnClickAdd);
-popupOpenBtnEdit.addEventListener("click", (e) => {
-  const getUserInfo = userInfo.getUserInfo();
-  nameInput.value = getUserInfo.name;
-  jobInput.value = getUserInfo.job;
-  cardFormValidation.resetValidation();
-  openOnClickEdit(e);
-});
 
 const enableValidation = (config) => {
   cardFormValidation.enableValidation();
