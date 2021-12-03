@@ -8,4 +8,4 @@
 
 При создании проекта использовались различные технологии web, в том числе CSS Grid Layout. Применялась адаптивная верстка макета. Для интерактивности контента применялся JavaScript, свойства DOM-дерева (textContent), методы (addEventListener).
 
-[//]: # " [Ссылка на проект в github][https://andreybord90.github.io/mesto/] "
+# " [Ссылка на проект в github][https://andreybord90.github.io/mesto/] "
