@@ -1,0 +1,13 @@
+.popup__exit_type_submit {
+  left: 438px;
+}
+
+.popup__exit_type_submit:hover {
+  opacity: 60%;
+}
+
+@media (max-width: 800px) {
+  .popup__exit_type_submit {
+    left: 262px;
+  }
+}

@@ -1,0 +1,13 @@
+.popup__exit_type_avatar {
+  left: 438px;
+}
+
+/* .popup__exit_type_avatar:hover {
+  opacity: 60%;
+} */
+
+@media (max-width: 800px) {
+  .popup__exit_type_avatar {
+    left: 262px;
+  }
+}
