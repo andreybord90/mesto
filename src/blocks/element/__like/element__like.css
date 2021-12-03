@@ -1,6 +1,7 @@
 .element__like {
   width: 22px;
-  padding-top: 3px;
+  height: 19px;
+  padding-top: 0;
   cursor: pointer;
   background-image: url(../../../image/like.svg);
   color: black;
