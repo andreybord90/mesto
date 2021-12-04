@@ -67,11 +67,14 @@ openPopupEdit.setEventListeners();
 
 const handleFormSubmit = (data) => {
   api.changeUserInfo(data);
-  api.getUserInfo().then((dataUser) => {
-    userInfo.setUserInfo(dataUser).catch((err) => {
+  api
+    .getUserInfo()
+    .then((dataUser) => {
+      userInfo.setUserInfo(dataUser);
+    })
+    .catch((err) => {
       console.log(err);
     });
-  });
 
   openPopupEdit.close();
 };
@@ -90,40 +93,6 @@ popupOpenBtnEdit.addEventListener("click", (e) => {
   jobInput.value = getUserInfo.about;
   openOnClickEdit(e);
 });
-const openPopupAdd = new PopupWithForm({
-  //попап добавления карточки
-  popup: popupAdd,
-  handleFormSubmit: (event) => {
-    event.owner = userId;
-    event.likes = [];
-    api.insertCard(event);
-    api
-      .getCards()
-      .then((dataCards) => defaultSection.renderItems(dataCards))
-      .catch((err) => {
-        console.log(err);
-      });
-    addContent(event);
-  },
-});
-openPopupAdd.setEventListeners();
-
-const openPopupAvatar = new PopupWithForm({
-  popup: popupAvatar,
-  handleFormSubmit: (data) => {
-    openPopupAvatar.loading(true);
-    api
-      .updateUserAvatar(data)
-      .then((data) => {
-        userInfo.setAvatar(data);
-        openPopupAvatar.close();
-      })
-      .catch((err) => console.log(err))
-      .finally(() => openPopupAvatar.loading(false));
-  },
-});
-
-openPopupAvatar.setEventListeners();
 
 // function submitAvatarForm(data) {}
 
@@ -157,6 +126,53 @@ const createCard = (data) => {
   ).generateCard();
   return card;
 };
+
+const openPopupAdd = new PopupWithForm({
+  //попап добавления карточки
+  popup: popupAdd,
+  handleFormSubmit: (event) => {
+    openPopupAdd.loading(true);
+    event.owner = userId;
+    event.likes = [];
+    api
+      .insertCard(event)
+      .then((res) => {
+        const addCard = createCard(res);
+        defaultSection.prependItem(addCard);
+        // defaultSection.renderItems(addCard);
+        openPopupAdd.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(openPopupAdd.loading(false));
+    // api
+    //   .getCards()
+    //   .then((dataCards) => defaultSection.renderItems(dataCards))
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    // addContent(event);
+  },
+});
+openPopupAdd.setEventListeners();
+
+const openPopupAvatar = new PopupWithForm({
+  popup: popupAvatar,
+  handleFormSubmit: (data) => {
+    openPopupAvatar.loading(true);
+    api
+      .updateUserAvatar(data)
+      .then((data) => {
+        userInfo.setAvatar(data);
+        openPopupAvatar.close();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => openPopupAvatar.loading(false));
+  },
+});
+
+openPopupAvatar.setEventListeners();
 
 function handleCardDelete(data) {
   cardDelete.open(data);

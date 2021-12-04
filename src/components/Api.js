@@ -8,29 +8,41 @@ export default class Api {
     this._headers = headers;
   }
   getCards() {
-    return fetch(`${this._url}/cards`, { headers: this._headers }).then(
-      onResponce
-    );
+    return fetch(`${this._url}/cards`, { headers: this._headers })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, { headers: this._headers }).then(
-      onResponce
-    );
+    return fetch(`${this._url}/users/me`, { headers: this._headers })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   setCardLike(cardId) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    }).then(onResponce);
+    })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   removeCardLike(cardId) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(onResponce);
+    })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
   changeUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
@@ -40,7 +52,11 @@ export default class Api {
         name: data.name,
         about: data.about,
       }),
-    }).then(onResponce);
+    })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
   //Добавление карточки
   insertCard(data) {
@@ -51,14 +67,22 @@ export default class Api {
         name: data.name,
         link: data.link,
       }),
-    }).then(onResponce);
+    })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
   //Удаление карточки
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(onResponce);
+    })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
   updateUserAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
@@ -67,21 +91,10 @@ export default class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then(onResponce);
+    })
+      .then(onResponce)
+      .catch((err) => {
+        console.log(err);
+      });
   }
-
-  // getInitialCards() {
-  //   return fetch("https://mesto.nomoreparties.co/v1/cohort-30/cards", {
-  //     method: "GET",
-  //     headers: {
-  //       authorization: "328ef2cf-f132-4d2f-959f-88c97b356965",
-  //       "Content-Type": "application/json",
-  //     },
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       return res.json();
-  //     }
-  //     return Promise.reject(`Ошибка!!!!!!!: ${res.status}`, res);
-  //   });
-  // }
 }
