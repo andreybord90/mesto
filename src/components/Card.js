@@ -6,7 +6,7 @@ export default class Card {
     this._likes = data.likes;
     this._name = data.name;
     this._link = data.link;
-    this._ownerId = data.owner._id;
+    this._ownerId = data.owner;
     this.id = data._id;
     this._currentUserId = data.currentUserId;
 
@@ -58,7 +58,7 @@ export default class Card {
   }
 
   _deleteButtomCard() {
-    if (this._currentUserId !== this._ownerId) {
+    if (this._currentUserId !== this._ownerId._id) {
       {
         this._element
           .querySelector(".element__delete")
