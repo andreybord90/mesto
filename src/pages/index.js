@@ -210,13 +210,13 @@ openPopup.setEventListeners();
 
 const openOnClickEditAvatar = () => {
   openPopupAvatar.open();
+  avatarFormValidation.resetValidation();
 };
 
 popupOpenBtnAvatar.addEventListener("click", openOnClickEditAvatar);
 
 const openOnClickAdd = () => {
   openPopupAdd.open();
-
   cardFormValidation.resetValidation();
 };
 
@@ -225,7 +225,7 @@ popupOpenBtnAdd.addEventListener("click", openOnClickAdd);
 const enableValidation = (config) => {
   cardFormValidation.enableValidation();
   editFormValidation.enableValidation();
-  avatarFormValidation.enableValidation;
+  avatarFormValidation.enableValidation();
 };
 
 enableValidation(config);
