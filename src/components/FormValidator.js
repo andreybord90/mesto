@@ -1,5 +1,6 @@
 export default class FormValidator {
   constructor(config, formElement) {
+    console.log(">>>>>>", formElement);
     this._formElement = formElement;
     this._config = config;
     this._submitButton = formElement.querySelector(config.submitButtonSelector);
@@ -58,11 +59,14 @@ export default class FormValidator {
 
   resetValidation() {
     this._toggleButtonState();
+    // console.log("hello", _formElement);
 
     this._inputList.forEach((inputElement) => {
       const errorElement = this._formElement.querySelector(
         `#${inputElement.id}-${this._config.errorClass}`
       );
+      // console.log("hello", _formElement);
+
       this._hideError(errorElement, inputElement);
     });
   }
