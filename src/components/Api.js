@@ -1,48 +1,40 @@
-function onResponce(res) {
-  return res.ok ? res.json() : Promise.reject(`Ошибка: ${res}`);
-}
+// function onResponce(res) {
+//   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res}`);
+// }
 
 export default class Api {
   constructor({ url, headers }) {
     this._url = url;
     this._headers = headers;
   }
+  _checkResponse(res) {
+    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res}`);
+  }
+
   getCards() {
-    return fetch(`${this._url}/cards`, { headers: this._headers })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    return fetch(`${this._url}/cards`, { headers: this._headers }).then((res) =>
+      this._checkResponse(res)
+    );
   }
 
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, { headers: this._headers })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    return fetch(`${this._url}/users/me`, { headers: this._headers }).then(
+      (res) => this._checkResponse(res)
+    );
   }
 
   setCardLike(cardId) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
-    })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => this._checkResponse(res));
   }
 
   removeCardLike(cardId) {
     return fetch(`${this._url}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => this._checkResponse(res));
   }
   changeUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
@@ -52,11 +44,7 @@ export default class Api {
         name: data.name,
         about: data.about,
       }),
-    })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => this._checkResponse(res));
   }
   //Добавление карточки
   insertCard(data) {
@@ -67,22 +55,14 @@ export default class Api {
         name: data.name,
         link: data.link,
       }),
-    })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => this._checkResponse(res));
   }
   //Удаление карточки
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => this._checkResponse(res));
   }
   updateUserAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
@@ -91,10 +71,6 @@ export default class Api {
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    })
-      .then(onResponce)
-      .catch((err) => {
-        console.log(err);
-      });
+    }).then((res) => this._checkResponse(res));
   }
 }
